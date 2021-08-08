@@ -1,0 +1,23 @@
+{
+  "name": "parkinglot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "yarn jest --coverage --verbose --runInBand"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "jest": "^27.0.3",
+    "prettier": "^1.19.1",
+    "remark-cli": "^8.0.0",
+    "remark-lint": "^7.0.0"
+  }
+}
