@@ -1,25 +1,25 @@
 const fareCalculation = require("./fareCalculation");
 
-const mockEntryTimeStamp = 1628300283317;
-const mockExitTimeStamp = 1628306750639;
-let dateNowSpy = jest.spyOn(Date, "now");
-dateNowSpy.mockImplementation(() => mockExitTimeStamp);
+const mockEntryTimeStamp = "1628403819";
+const mockExitTimeStamp = "1628413854";
 
 describe("fareCalculation", () => {
-  it("should the correct fare (4) for car.", async () => {
+  it("should the correct fare (6) for car.", () => {
     const mockCarType = "car";
     const cost = fareCalculation.fareCalculation(
       mockEntryTimeStamp,
+      mockExitTimeStamp,
       mockCarType
     );
-    expect(cost).toBe(4);
+    expect(cost).toBe(6);
   });
-  it("should the correct fare (2) for motorbike.", async () => {
+  it("should the correct fare (3) for motorbike.", () => {
     const mockCarType = "motorcycle";
     const cost = fareCalculation.fareCalculation(
       mockEntryTimeStamp,
+      mockExitTimeStamp,
       mockCarType
     );
-    expect(cost).toBe(2);
+    expect(cost).toBe(3);
   });
 });

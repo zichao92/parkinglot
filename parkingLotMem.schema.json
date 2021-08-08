@@ -1,0 +1,17 @@
+{
+    "SGX1001": {
+        "type": "car",
+        "entryTimeStamp": 160000,
+        "allocated": "CarLot1"
+    },
+    "SGX1234A": {
+        "type": "car",
+        "entryTimeStamp": 1613541902,
+        "allocated": "CarLot2"
+    },
+    "SGG9999A": {
+        "type": "car",
+        "entryTimeStamp": 1613541902,
+        "allocated": "CarLot3"
+    }
+}
