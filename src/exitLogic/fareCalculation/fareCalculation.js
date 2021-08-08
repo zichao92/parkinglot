@@ -3,7 +3,7 @@ const fareCalculation = (entryTimeStamp, exitTimeStamp, carType) => {
     car: 2,
     motorcycle: 1,
   };
-  const hourDifference = Math.round(
+  const hourDifference = Math.ceil(
     Math.abs(exitTimeStamp - entryTimeStamp) / 36e2
   );
   const cost = hourDifference * rates[carType];
