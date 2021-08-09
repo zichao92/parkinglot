@@ -2,10 +2,10 @@
 ### Language used
 nodejs
 ### Installaion
-1) `npm i`
+1) run `npm i`
 
 ### Test
-1) `yarn test`
+1) run `yarn test` \
 To add more test cases, please put the "inputfile" as .txt format and place it under `src/data/`
 Go to `src/handler/handler.test.js` and add your new customised inputfile. Remember to rename the test case.
 Please remove `.skip` from the individual handler test to see results.
