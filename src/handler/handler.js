@@ -3,7 +3,8 @@ const readline = require("readline");
 const initMem = require("../init/initMem");
 const actionFactory = require("../factory/action/actionFactory");
 
-const handler = async(filename) => {
+const handler = async (filename) => {
+  let arrayMessage = [];
   let statusMem = {};
   let currentCapMem = {};
   let limitMem = {};
@@ -34,9 +35,11 @@ const handler = async(filename) => {
       parkingLotMem = actionObj.parkingLotMem;
       statusMem = actionObj.statusMem;
       console.log(message);
+      arrayMessage.push(message);
     }
     indexCounter++;
   }
+  return arrayMessage;
 };
 
 module.exports = { handler };

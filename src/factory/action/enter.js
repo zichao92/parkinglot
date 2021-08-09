@@ -1,28 +1,41 @@
 const limitChecker = require("../../entryLogic/limitChecker/limitChecker");
+const validVehicle = require("../../entryLogic/validVehicle/validVehicle");
 const allocateObjFactory = require("../allocateObj/allocateObjFactory");
-const findAvailableLot = require("../../entryLogic/findLot/findAvailableLot")
+const findAvailableLot = require("../../entryLogic/findLot/findAvailableLot");
 
 const enter = (params, limitMem, currentCapMem, parkingLotMem, statusMem) => {
   const vehicleType = params[1];
   const carPlate = params[2];
   const timeStamp = params[3];
-  const limitCheckResponse = limitChecker.limitChecker(vehicleType, limitMem, currentCapMem);
-  let message = ""
-  let allocatedObj = {}
-  if (limitCheckResponse){
-    currentCapMem[vehicleType] += 1 // increase current parking status of vehicle by 1
-    const allocatedLot = findAvailableLot.findAvailableLot(vehicleType, statusMem);
-    statusMem[vehicleType][allocatedLot] = false // updates occupy status on statusMem
+  let message = "";
+  const validCheckResponse = validVehicle.validVehicle(vehicleType, limitMem);
+  if (!validCheckResponse) {
+    message = `${vehicleType} isnt a supported vehicle by our carpark. Please try somewhere else! Thanks`;
+    return { message, currentCapMem, parkingLotMem, statusMem };
+  }
+  const limitCheckResponse = limitChecker.limitChecker(
+    vehicleType,
+    limitMem,
+    currentCapMem
+  );
+  let allocatedObj = {};
+  if (limitCheckResponse) {
+    currentCapMem[vehicleType] += 1; // increase current parking status of vehicle by 1
+    const allocatedLot = findAvailableLot.findAvailableLot(
+      vehicleType,
+      statusMem
+    );
+    statusMem[vehicleType][allocatedLot] = false; // updates occupy status on statusMem
     const allocateObjtFn = allocateObjFactory(vehicleType);
     allocatedObj = allocateObjtFn(carPlate, timeStamp, allocatedLot);
-    parkingLotMem = {...parkingLotMem, ...allocatedObj}
-    message = `Accept ${allocatedObj[carPlate].allocated}`
+    parkingLotMem = { ...parkingLotMem, ...allocatedObj };
+    message = `Accept ${allocatedObj[carPlate].allocated}`;
   } else {
-    message = 'Reject'
-    allocatedObj = null
+    message = "Reject";
+    allocatedObj = null;
   }
 
-  return {message, currentCapMem, parkingLotMem, statusMem};
+  return { message, currentCapMem, parkingLotMem, statusMem };
 };
 
 module.exports = enter;

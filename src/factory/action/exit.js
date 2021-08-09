@@ -1,16 +1,43 @@
 const clearLot = require("../../exitLogic/clearLot/clearLot");
 const fareCalculation = require("../../exitLogic/fareCalculation/fareCalculation");
+const checkExistence = require("../../exitLogic/checkExistence/checkExistence");
 
 const exit = (params, limitMem, currentCapMem, parkingLotMem, statusMem) => {
+  let message = "";
   const carPlate = params[1];
   const exitTimeStamp = params[2];
+  const checkExistenceResponse = checkExistence.checkExistence(carPlate, parkingLotMem)
+  if (!checkExistenceResponse) {
+    message =
+      "We cannot find your vehicle in our records! Please stay put, gonna call ghostbusters to catch phatom driver!";
+    return {
+      message,
+      currentCapMem,
+      parkingLotMem: parkingLotMem,
+      statusMem: statusMem,
+    };
+  }
   const vehicleType = parkingLotMem[carPlate].type;
   const targetAllocation = parkingLotMem[carPlate].allocated;
   const entryTimeStamp = parkingLotMem[carPlate].entryTimeStamp;
-  const cost = fareCalculation.fareCalculation(entryTimeStamp, exitTimeStamp, vehicleType);
+  const costResponse = fareCalculation.fareCalculation(
+    entryTimeStamp,
+    exitTimeStamp,
+    vehicleType
+  );
+  if (!costResponse.success) {
+    message =
+      "Something went wrong with the cost calculation. Please call the carpark staff @999 for assistance!";
+    return {
+      message,
+      currentCapMem,
+      parkingLotMem: parkingLotMem,
+      statusMem: statusMem,
+    };
+  }
   const response = clearLot.clearLot(carPlate, parkingLotMem, statusMem);
   currentCapMem[vehicleType] -= 1;
-  const message = `${targetAllocation} ${cost}`;
+  message = `${targetAllocation} ${costResponse.cost}`;
   return {
     message,
     currentCapMem,

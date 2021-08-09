@@ -1,4 +1,7 @@
 const fareCalculation = (entryTimeStamp, exitTimeStamp, carType) => {
+  if (entryTimeStamp > exitTimeStamp){
+    return {cost:0, success:false}
+  }
   const rates = {
     car: 2,
     motorcycle: 1,
@@ -7,6 +10,6 @@ const fareCalculation = (entryTimeStamp, exitTimeStamp, carType) => {
     Math.abs(exitTimeStamp - entryTimeStamp) / 36e2
   );
   const cost = hourDifference * rates[carType];
-  return cost
+  return {cost, success:true}
 };
 module.exports = { fareCalculation };
