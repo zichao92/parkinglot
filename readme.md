@@ -8,6 +8,7 @@ nodejs
 1) `yarn test`
 To add more test cases, please put the "inputfile" as .txt format and place it under `src/data/`
 Go to `src/handler/handler.test.js` and add your new customised inputfile. Remember to rename the test case.
+Please remove `.skip` from the individual handler test to see results.
 
 ### This program maintains 4 type of memories
 In the absence of database, im using these objects as memories.
