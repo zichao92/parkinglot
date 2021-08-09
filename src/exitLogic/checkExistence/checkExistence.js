@@ -1,6 +1,4 @@
 // Checks if vehicle exists in parkingLotMem, we dont want phatom vehicles
-const checkExistence = (carPlate, parkingLotMem) =>{
-  return (carPlate in parkingLotMem)
-}
+const checkExistence = (carPlate, parkingLotMem) => (carPlate in parkingLotMem);
 
-module.exports = { checkExistence }
+module.exports = { checkExistence };

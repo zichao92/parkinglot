@@ -1,9 +1,8 @@
 const findAvailableLot = (vehicleType, statusMem) => {
   const targetTypeObj = statusMem[vehicleType];
-  for (let key in targetTypeObj) {
-    if (targetTypeObj[key]) {return key};
-  }
+  const foundLot = Object.keys(targetTypeObj).find((key) => targetTypeObj[key] === true);
+  return foundLot;
 };
 module.exports = { findAvailableLot };
 
-//finds earliest empty lot & return the key
+// finds earliest empty lot & return the key

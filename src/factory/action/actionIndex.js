@@ -1,8 +1,7 @@
+const enter = require('./enter');
+const exit = require('./exit');
 
-const enter = require("./enter");
-const exit = require("./exit");
-
-module.exports =  {
-    enter,
-    exit
+module.exports = {
+  enter,
+  exit,
 };

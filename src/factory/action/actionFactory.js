@@ -1,6 +1,4 @@
-const actionIndex = require("./actionIndex")
+const actionIndex = require('./actionIndex');
 
-const actionFactory = (state) =>{
-    return actionIndex[state]
-}
-module.exports = actionFactory
+const actionFactory = (state) => actionIndex[state];
+module.exports = actionFactory;

@@ -1,7 +1,7 @@
 const car = (carPlate, timeStamp, allocated) => {
   const carObj = {
     [carPlate]: {
-      type: "car",
+      type: 'car',
       entryTimeStamp: timeStamp,
       allocated,
     },

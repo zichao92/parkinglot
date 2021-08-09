@@ -1,15 +1,15 @@
-const clearLot = require("./clearLot");
+const clearLot = require('./clearLot');
 
 const mockparkingLotMem = {
   SGX1001: {
-    type: "car",
+    type: 'car',
     entryTimeStamp: 160000,
-    allocated: "CarLot1",
+    allocated: 'CarLot1',
   },
   SGX1234A: {
-    type: "car",
+    type: 'car',
     entryTimeStamp: 1613541902,
-    allocated: "CarLot2",
+    allocated: 'CarLot2',
   },
 };
 
@@ -26,20 +26,20 @@ const mockStatusMem = {
     MotorcycleLot4: true,
   },
 };
-const mockCarPlate = "SGX1001";
+const mockCarPlate = 'SGX1001';
 
-describe("clearLot", () => {
-  it("should remove target carplate from parkingLotMem, freeup statusMem and return these obj.", () => {
+describe('clearLot', () => {
+  it('should remove target carplate from parkingLotMem, freeup statusMem and return these obj.', () => {
     const response = clearLot.clearLot(
       mockCarPlate,
       mockparkingLotMem,
-      mockStatusMem
+      mockStatusMem,
     );
     expect(response.parkingLotMem).toEqual({
       SGX1234A: {
-        type: "car",
+        type: 'car',
         entryTimeStamp: 1613541902,
-        allocated: "CarLot2",
+        allocated: 'CarLot2',
       },
     });
     expect(response.statusMem).toEqual({

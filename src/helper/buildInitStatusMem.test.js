@@ -1,7 +1,7 @@
-const buildInitStatusMem = require("./buildInitStatusMem");
+const buildInitStatusMem = require('./buildInitStatusMem');
 
-describe("buildInitStatusMem", () => {
-  it("should return statusMem object based on incoming array message.", () => {
+describe('buildInitStatusMem', () => {
+  it('should return statusMem object based on incoming array message.', () => {
     let statusMem = {};
     const vehicleArray = [{ Car: 3 }, { Motorcycle: 4 }];
     vehicleArray.forEach((vehicle) => {

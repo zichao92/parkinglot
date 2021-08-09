@@ -1,6 +1,4 @@
-const allocateObjndex = require("./allocateObjndex")
+const allocateObjndex = require('./allocateObjndex');
 
-const allocateLotFactory = (vehicle) =>{
-    return allocateObjndex[vehicle]
-}
-module.exports = allocateLotFactory
+const allocateLotFactory = (vehicle) => allocateObjndex[vehicle];
+module.exports = allocateLotFactory;

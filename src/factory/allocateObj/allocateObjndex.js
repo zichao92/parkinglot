@@ -1,8 +1,7 @@
+const car = require('./car');
+const motorcycle = require('./motorcycle');
 
-const car = require("./car");
-const motorcycle = require("./motorcycle");
-
-module.exports =  {
-    car,
-    motorcycle
+module.exports = {
+  car,
+  motorcycle,
 };

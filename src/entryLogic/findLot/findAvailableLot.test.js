@@ -1,7 +1,8 @@
-const findAvailableLot = require("./findAvailableLot");
-const mockCarType = "car";
+const findAvailableLot = require('./findAvailableLot');
 
-describe("findAvailableLot", () => {
+const mockCarType = 'car';
+
+describe('findAvailableLot', () => {
   it("should return CarLot2 since it's available.", () => {
     const mockStatusMem = {
       car: {
@@ -20,7 +21,7 @@ describe("findAvailableLot", () => {
       mockCarType,
       mockStatusMem,
     );
-    expect(response).toBe("CarLot2");
+    expect(response).toBe('CarLot2');
   });
   it("should return CarLot1 since it's available.", () => {
     const mockStatusMem = {
@@ -40,6 +41,28 @@ describe("findAvailableLot", () => {
       mockCarType,
       mockStatusMem,
     );
-    expect(response).toBe("CarLot1");
+    expect(response).toBe('CarLot1');
+  });
+  it("should return CarLot3 since it's available.", () => {
+    const mockStatusMem = {
+      car: {
+        CarLot1: false,
+        CarLot2: false,
+        CarLot3: true,
+        CarLot4: false,
+        CarLot5: true,
+      },
+      motorcycle: {
+        MotorcycleLot1: true,
+        MotorcycleLot2: false,
+        MotorcycleLot3: false,
+        MotorcycleLot4: true,
+      },
+    };
+    const response = findAvailableLot.findAvailableLot(
+      mockCarType,
+      mockStatusMem,
+    );
+    expect(response).toBe('CarLot3');
   });
 });

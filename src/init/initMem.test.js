@@ -1,9 +1,9 @@
-const initMem = require("./initMem");
-const buildInitStatusMem = require("../helper/buildInitStatusMem");
+const initMem = require('./initMem');
+const buildInitStatusMem = require('../helper/buildInitStatusMem');
 
-let buildInitStatusMemSpy = jest.spyOn(
+const buildInitStatusMemSpy = jest.spyOn(
   buildInitStatusMem,
-  "buildInitStatusMem"
+  'buildInitStatusMem',
 );
 
 const mockStatusMem = {
@@ -20,17 +20,15 @@ const mockStatusMem = {
   },
 };
 
-describe("initMem", () => {
-  it("should return statusMem & limtMem object.", () => {
-    let array = ["5", "2"];
-    buildInitStatusMemSpy.mockImplementation(() => {
-      return mockStatusMem;
-    });
+describe('initMem', () => {
+  it('should return statusMem & limtMem object.', () => {
+    const array = ['5', '2'];
+    buildInitStatusMemSpy.mockImplementation(() => mockStatusMem);
     const response = initMem.initMem(array);
     expect(buildInitStatusMemSpy).toHaveBeenCalledTimes(2);
     expect(response.limitMem).toEqual({
-      car: "5",
-      motorcycle: "2",
+      car: '5',
+      motorcycle: '2',
     });
     expect(response.statusMem).toEqual(mockStatusMem);
     expect(response.currentCapMem).toEqual({ car: 0, motorcycle: 0 });
