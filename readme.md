@@ -10,7 +10,7 @@ To add more test cases, please put the "inputfile" as .txt format and place it u
 Go to `src/handler/handler.test.js` and add your new customised inputfile. Remember to rename the test case.
 Please remove `.skip` from the individual handler test to see results.
 
-### This program maintains 4 type of memories
+### This program maintains 4 types of memory
 In the absence of database, im using these objects as memories.
 1) currentCapMem
 This object mains the current number of cars and motorcycles. It will be initialised as 0
