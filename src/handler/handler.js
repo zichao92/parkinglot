@@ -42,4 +42,6 @@ const handler = async (filename) => {
   return arrayMessage;
 };
 
+const filename  = 'src/data/inputfile3.txt' // Change file here
+handler(filename)
 module.exports = { handler };

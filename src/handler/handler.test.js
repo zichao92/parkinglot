@@ -2,9 +2,9 @@ const handler = require('./handler');
 
 describe('handler', () => {
   it.skip('running the whole program on data1', async () => {
-    const filename = 'src/data/inputfile.txt';
+    const filename = 'src/data/inputfile.txt'; // change your file name here
     const arrayMessages = await handler.handler(filename);
-    expect(arrayMessages[0]).toBe('Accept MotorcycleLot1');
+    expect(arrayMessages[0]).toBe('Accept MotorcycleLot1'); // change these to your expected output or just monitor the console log since im logging it
     expect(arrayMessages[1]).toBe('Accept CarLot1');
     expect(arrayMessages[2]).toBe('MotorcycleLot1 2');
     expect(arrayMessages[3]).toBe('Accept CarLot2');
